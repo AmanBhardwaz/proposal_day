@@ -1,5 +1,5 @@
 
-const CORRECT_PASSWORD = 'oh my darling I love you';
+const CORRECT_PASSWORD = 'madhuri';
 
 // DOM Elements
 const passwordForm = document.getElementById('passwordForm');
