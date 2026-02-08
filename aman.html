@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Day</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Italiana&family=Cinzel:wght@400;500;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Background layers -->
+        <div class="bg-gradient"></div>
+        <div class="bg-radial"></div>
+        <div class="bg-texture"></div>
+
+        <!-- Sparkle particles -->
+        <div id="sparkles" class="sparkles"></div>
+
+        <!-- Floating hearts background -->
+        <div id="floatingHearts" class="floating-hearts"></div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Title -->
+            <div class="title-section">
+                <div class="glow-bg"></div>
+                <h1 class="main-title">Hii Cutie</h1>
+                <div class="title-divider"></div>
+                <p class="subtitle">This is for you on the day of proposal</p>
+            </div>
+
+            <!-- Envelope (hidden when unlocked) -->
+            <div id="envelope" class="envelope-container">
+                <div class="envelope-glow"></div>
+                <div class="envelope">
+                    <!-- Corner ornaments -->
+                    <div class="corner-ornament top-left"></div>
+                    <div class="corner-ornament top-right"></div>
+                    <div class="corner-ornament bottom-left"></div>
+                    <div class="corner-ornament bottom-right"></div>
+
+                    <!-- Envelope flap -->
+                    <div class="envelope-flap"></div>
+
+                    <!-- Wax seal -->
+                    <div class="wax-seal">
+                        <svg class="lock-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+
+                    <!-- Password form -->
+                    <div class="password-form">
+                        <form id="passwordForm">
+                            <label for="password" class="form-label">Whisper the Magic Words</label>
+                            <input 
+                                type="text" 
+                                id="password" 
+                                class="form-input" 
+                                placeholder="Speak from your heart..."
+                                autocomplete="off"
+                            />
+                            <button type="submit" class="submit-button">
+                                <div class="button-shine"></div>
+                                <span>Unlock My Heart</span>
+                            </button>
+                            <p id="errorMessage" class="error-message"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Love Letter (hidden initially) -->
+            <div id="letter" class="letter-container" style="display: none;">
+                <!-- Falling hearts -->
+                <div id="fallingHearts" class="falling-hearts"></div>
+
+                <!-- Letter glow -->
+                <div class="letter-glow"></div>
+
+                <!-- Letter content -->
+                <div class="letter">
+                    <!-- Ornate borders -->
+                    <div class="letter-border-outer"></div>
+                    <div class="letter-border-inner"></div>
+
+                    <!-- Corner hearts -->
+                    <div class="corner-heart top-left">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <div class="corner-heart top-right">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <div class="corner-heart bottom-left">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <div class="corner-heart bottom-right">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+
+                    <div class="letter-content">
+                        <!-- Letter heading -->
+                        <div class="letter-heading">
+                            <h2 class="letter-title">My Dearest Trijya,</h2>
+                            <div class="letter-divider"></div>
+                        </div>
+
+                        <!-- Letter text -->
+                        <div class="letter-text">
+                            <p class="letter-paragraph first-paragraph">
+                                From the moment our paths crossed, my world transformed into something more beautiful, 
+                                more meaningful, and more complete. Every smile you share, every word you speak, 
+                                and every moment we spend together fills my heart with indescribable joy.
+                            </p>
+
+                            <p class="letter-paragraph">
+                                You are the melody in my song, the colors in my sunset, and the reason I believe 
+                                in forever. With you, I've discovered a love I never knew existed—a love that makes 
+                                me want to be better, to dream bigger, and to cherish every precious moment.
+                            </p>
+
+                            <p class="letter-paragraph">
+                                Today, I stand before you with a heart full of hope and a soul bursting with love. 
+                                I want to walk through life's journey with you, to hold your hand through every season, 
+                                to celebrate your victories, and to comfort you in difficult times.
+                            </p>
+
+                            <p class="letter-question">
+                                Trijya, will you make me the happiest person in the world?<br />
+                                Will you be mine, today and always?
+                            </p>
+
+                            <div class="letter-signature">
+                                <p class="signature-text">Forever and always yours,</p>
+                                <p class="signature-name">Aman</p>
+                                <svg class="signature-heart" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom hearts decoration -->
+                    <div class="bottom-hearts">
+                        <div class="bottom-hearts-glow"></div>
+                        <svg class="bottom-heart heart-1" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <svg class="bottom-heart heart-2" width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <svg class="bottom-heart heart-3" width="45" height="45" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <svg class="bottom-heart heart-4" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <svg class="bottom-heart heart-5" width="42" height="42" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio element -->
+    <audio id="romanticSong" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
