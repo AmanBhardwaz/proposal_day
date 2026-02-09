@@ -1,0 +1,608 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 200, 180, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 150, 180, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 30% 70%, rgba(255, 180, 200, 0.3) 0%, transparent 30%),
+        radial-gradient(circle at 70% 30%, rgba(255, 100, 150, 0.2) 0%, transparent 25%);
+    z-index: -1;
+    animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header Styles */
+.header {
+    margin-bottom: 50px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    color: #fff;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+    animation: heartbeat 2s infinite;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+/* Envelope Styles */
+.envelope-container {
+    perspective: 1000px;
+    margin: 50px 0;
+}
+
+.envelope {
+    width: 320px;
+    height: 220px;
+    position: relative;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.envelope-front {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.envelope.open .envelope-front {
+    transform: rotateX(180deg);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    transform-origin: top;
+    transform: rotateX(0deg);
+    transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 3;
+}
+
+.flap-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #c0392b 0%, #a5281b 50%, #8b1c12 100%);
+    border-radius: 15px 15px 5px 5px;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.flap-inner::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    border-radius: 10px;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-body {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+}
+
+.body-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #a5281b 0%, #8b1c12 50%, #70160e 100%);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 5px 15px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.body-inner::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    border-radius: 0 0 10px 10px;
+}
+
+.envelope-shadow {
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    width: 90%;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(5px);
+    z-index: 0;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.8rem;
+    z-index: 4;
+    animation: pulse 2s infinite;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.envelope-seal {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    z-index: 5;
+    animation: sealGlow 3s ease-in-out infinite;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* Password Section */
+.password-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 245, 240, 0.98));
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+    width: 300px;
+    z-index: 10;
+    backdrop-filter: blur(15px);
+    animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.lock-animation {
+    position: relative;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.lock-icon {
+    font-size: 3.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.key-icon {
+    font-size: 2rem;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    animation: keyShake 3s infinite;
+    opacity: 0.7;
+}
+
+.password-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #e74c3c;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.password-text {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 25px;
+    animation: inputGlow 2s ease-in-out infinite alternate;
+}
+
+.input-label {
+    text-align: center;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #e74c3c;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.password-input {
+    width: 100%;
+    padding: 18px 25px;
+    border: 3px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    outline: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.95);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: linear-gradient(90deg, transparent, rgba(231, 76, 60, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.input-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    opacity: 0.7;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+.password-input:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+}
+
+.unlock-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 16px 35px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+.button-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.unlock-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.hint {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Letter Styles */
+.letter-container {
+    display: none;
+    margin-top: 30px;
+    animation: fadeIn 1s ease-out;
+}
+
+.letter {
+    background: linear-gradient(145deg, #fff9f0, #fffaf5);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 0 0 2px rgba(255, 215, 0, 0.3),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+    position: relative;
+    max-width: 650px;
+    margin: 0 auto;
+    border: 3px solid #ffd700;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 15%),
+        radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 15%);
+}
+
+.letter.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.letter-header h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #e74c3c;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.letter-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: left;
+}
+
+.letter-content p {
+    margin-bottom: 15px;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #e74c3c;
+    text-align: right;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* Flowers Animation */
+.flowers {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    position: relative;
+}
+
+.flower {
+    font-size: 2.5rem;
+    animation: bloom 2s ease-out forwards;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.flower:nth-child(1) { animation-delay: 0.5s; }
+.flower:nth-child(2) { animation-delay: 1s; }
+.flower:nth-child(3) { animation-delay: 1.5s; }
+.flower:nth-child(4) { animation-delay: 2s; }
+.flower:nth-child(5) { animation-delay: 2.5s; }
+
+/* Poem Styles */
+.poem-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.poem-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    margin: 12px 0;
+    color: #6b4226;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.poem-line:hover {
+    color: #8b4513;
+    transform: scale(1.02);
+}
+
+.poem-break {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #c45a5a;
+    margin: 25px 0;
+    position: relative;
+}
+
+.poem-break::before,
+.poem-break::after {
+    content: "❤️";
+    margin: 0 10px;
+    font-size: 1.1rem;
+}
+
+.poem-line:first-child {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #8b4513;
+    margin-bottom: 25px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(1deg); }
+    66% { transform: translateY(-25px) rotate(-1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes sealGlow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+@keyframes keyShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes inputGlow {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.3);
+    }
+    100% { 
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.7; }
+    50% { transform: translateY(-50%) scale(1.2); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bloom {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+    }
+    
+    .envelope {
+        width: 250px;
+        height: 170px;
+    }
+    
+    .password-section {
+        width: 240px;
+        padding: 20px;
+    }
+    
+    .letter {
+        padding: 25px;
+    }
+    
+    .letter-header h2 {
+        font-size: 2rem;
+    }
+}
